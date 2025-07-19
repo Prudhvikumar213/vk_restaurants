@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VK restaurants </title>
+    <link rel="icon" href="vk1.png"type="image/png">
+    <style>
+        body{
+            background-color: #f8f8f8;
+            margin: 0%;
+            background-color: #573666;
+        }
+        main{
+            margin-top:0%;
+        }
+        header{
+            margin-top: 0%;
+        }
+     
+    
+    
+    .hh{
+         color:khaki;
+         margin: 0%;
+         margin-top: 0%;
+         font-size:500%;
+         background-color: #573666;
+        text-align: left;
+        padding-left: 20px;
+        text-shadow: 7px 10px 12px black;
+       
+
+    }
+    .pru{
+        
+        background-color: beige;
+        margin-top: 0%;
+    }
+    .hhh{
+        text-align: center;
+        font-size:medium;
+        margin-top: 0%;
+        
+    }
+    .card-box{
+       display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-left: 5%;
+      padding-right: 5%;
+      
+    }
+
+    .card {
+        flex: 7 10 20%;
+        margin-left: 7px;
+      width: 400px;
+      background:#f8f8f8;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 3px 8px 15px rgba(0,0,0,0.1);
+      margin:0;
+      
+    }
+
+    .card img{
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 7%;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      margin-left: 1%;
+      text-align: center;
+    }
+    a:link img{
+    color: black;
+    }
+    a:visited img{
+        color: brown;
+        opacity: 0.7;
+        border: 5px cornflowerblue;
+    }
+    a:hover img{
+        color: chartreuse;
+        transform: scale(1.1);
+        filter: brightness(1.1);
+    }
+    a:active img{
+        color: hotpink;
+        transform: scale(0.95);
+        filter: brightness(0.8);
+    }
+    
+    .cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #9a1989;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: rgb(140, 0, 255);
+        color: white;
+        font-size: 14px;
+        border-radius: 50%;
+        padding: 2px 6px;
+    }
+    
+
+    img {
+      width: 100%;
+      height:60%;
+      border-radius: 10px;
+    }
+    h2{
+        text-align: center;
+        font-style: oblique;
+    }
+    h1{
+        font-style: italic;
+        border-bottom: solid 2px rgb(140, 0, 255);
+    }
+    p{
+        margin-left: 15%;
+    }
+    button{
+        background-color: orange;
+        border:none;
+        outline: none;
+        width: 100%;
+        height: 7%;
+        border-bottom-left-radius:                                                                                                                     00% ;
+        border-top-left-radius: 15%;
+        border-bottom-right-radius: 300%;
+        border-top-right-radius: 15%;
+    }
+    button:hover {
+    filter: brightness(1.1);
+    }
+    button {
+         cursor: pointer;
+    }
+    
+   .food-category {
+    width: 90%;
+    margin: 40px auto;
+    background-color: beige;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.food-category h1 {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Grid layout: 3 columns fixed */
+.menu-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 20px;
+    padding: 10px;
+    
+}
+
+.vivo {
+    background-color: rgb(204, 216, 182);
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.vivo img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.vivo p {
+    text-align: right;
+}
+    
+    
+
+    </style>
+
+
+    
+</head>
+<body>
+
+    <header 
+        <div class="ord" style="background-color: #573666;display: flex; gap: 0px; flex-wrap: wrap; justify-content: left;border-bottom: solid;border-color:cyan; " id="ord">
+            <p style="width: 10%; height: 5%; margin-left: 1%;"><img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="image" height="10%" width="10%"></p>
+            <h3 class="hh"> Restaurants</h3>
+            <p>
+                <a  href="" style="color:red; font-size: large; text-decoration: none; margin-left: 95%; width: 2%; height: 4%;"></a>
+                
+                
+            </p>
+            <p style="width: 5%; width: 5%;">
+                <a  href="profile" style="color:red; font-size: large; text-decoration: none; margin-left: 95%; width: 2%; height: 4%;"><img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt=" image" width="5%" height="5%"></a>
+                <a  href="logout" style="color:red; font-size: large; text-decoration: none; margin-left: 85%;">logout</a>
+            </p>
+            
+        </div>
+            
+            
+    </header>
+
+    <main>
+        
+        <div class="pru">
+            <h5 class="hhh">Given list of an items avalible in our restaurants</h5>
+            
+               
+                <div class="card-box">
+                <div class="card">
+                    <a href="#cofee"><img src="https://www.freshfarms.com/wp-content/uploads/2023/02/The-Best-Way-to-Enjoy-Coffee-with-Milk-Fresh-Farms-Grocery-in-Chicago.jpg" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                        <b> cofee </b>
+                        </div>
+                </div>
+                <div class="card">
+                    <a href="#tiffin"><img src="https://foodiewish.com/wp-content/uploads/2020/05/Medu-Vada-Recipe-1.jpg" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                        <b> tiffin </b>
+                        </div>
+                </div>
+
+
+                <div class="card">
+                    <a href="#juices"><img src="https://img.onmanorama.com/content/dam/mm/en/food/recipe/images/2023/4/20/banana-juice.jpg" alt="" width="31%" height="31%"></a>
+                        <div class="card-title">
+                        <b>Juices</b> 
+                        </div>
+                </div>
+                
+                
+                <div class="card" id="category-menu">
+                    <a href="#milkshake"><img src="https://www.tastingtable.com/img/gallery/14-tips-you-need-when-making-a-homemade-milkshake/l-intro-1671810629.jpg" alt="" width="30%" height="30%" ></a>
+                        <div class="card-title">
+                            <b>Milkshake</b>
+                        </div>
+                </div>
+                
+                <div class="card">
+                    <a href="#ice-cream"><img src="https://inspirationseek.com/wp-content/uploads/2016/02/Ice-Cream-Pictures.jpg" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                            <b>ice-Cream</b>
+                        </div>
+                        
+                </div>  
+                
+
+                
+                <div class="card">
+                    <a href="#burger"><img src="https://www.certifiedirishangus.ie/wp-content/uploads/2019/11/TheUltimateBurgerwBacon_RecipePic.jpg" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                            <b>Burger</b>
+                        </div>
+                </div>
+
+
+                <div class="card">
+                    <a href="#pizza"><img src="https://theawesomedaily.com/wp-content/uploads/2016/09/pictures-of-pizza-23-1.jpg" alt="" width="30%" height="30%" ></a>
+                        <div class="card-title">
+                            <b></b>Pizza</b>
+                        </div>
+                        
+                </div>
+
+                
+                
+                <div class="card">
+                    <a href="#sandwiches"><img src="https://chefeel.com/chefgeneralfiles/2022/09/high-angle-delicious-sandwiches-arrangement-scaled.jpg" alt="" width="31%" height="31%"></a>
+                        <div class="card-title">
+                            <b>Sandwiches</b>
+                        </div>
+                </div>
+
+                <div class="card">
+                    <a href="#nodiels"><img src="https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/63/2020/03/GettyImages-1051749178-scaled.jpg" alt="" width="30%" height="30%" ></a>
+                        <div class="card-title">
+                            <b>nodiels</b>
+                        </div>
+                    </div>
+                
+                <div class="card">    
+                    <a href="#veg-meals"><img src="http://cookingmypassion.com/wp-content/uploads/Homemade-veg-meals-cookingmypassion.jpg" alt="" width="31%" height="31%"></a>
+                        <div class="card-title">
+                            <b>veg-meals</b>
+                        </div>
+                </div>
+
+
+                <div class="card">
+                    <a href="#non-veg meals"><img src="https://external-preview.redd.it/Zm1laUm7gpqVsdaIgK7VMq81P2eVqR_YD89iOFO_9qQ.jpg?width=960&crop=smart&auto=webp&s=e8de8d1ea41e01f1a4525cb27fa6c060789f7184" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                            non-veg meals</div>
+                        </div>
+                
+                <div class="card">
+                    <a href="#veg-biryani"><img src="https://www.dwarakaorganic.com/wp-content/uploads/2012/06/Veg-Biryani-Recipe.jpg" alt="" width="31%" height="31%"></a>
+                        <div class="card-title">
+                        <b> Veg-Biryani </b>
+                        </div>
+                </div>
+                <div class="card">
+                    <a href="#egg-biryani"><img src="https://www.chefkunalkapur.com/wp-content/uploads/2021/03/egg-biryani-1-scaled.jpeg?v=1625193642" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                            <b>egg-biryani</b>
+                        </div>
+                </div>
+                
+                <div class="card">
+                    <a href="#hyderabadi-chicken-biryani"><img src="https://img.freepik.com/premium-photo/hyderabadi-chicken-biryani-food-photos_410516-42775.jpg?w=900" alt="" width="30%" height="30%" ></a>
+                        <div class="card-title">
+                            <b>hyderabadi-chicken-biryani</b>
+                        </div>
+                </div>
+                
+                
+                <div class="card">
+                    <a href="#fish-biryani"><img src="https://images.aws.nestle.recipes/resized/5d80437e677ba82c7a4f6dfede5f6f24_fish_biryani_1500x700-1_944_531.jpg" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                            <b>fish-biryani</b>
+                        </div>
+                </div>
+                
+                <div class="card">
+                    <a href="#mutton-biryani"><img src="https://www.licious.in/blog/wp-content/uploads/2020/12/Mutton-Biryani.jpg" alt=""  width="30%" height="30%"></a>
+                        <div class="card-title">
+                            mutton-Biryani</div>
+                </div>
+            </div>
+            <br>
+        </div><br><br><br>
+
+           {% for category, items in menu_by_category.items() %}
+                <div class="food-category" id="{{ category }}">
+                    <h1>{{ category|title }}</h1>
+
+                    <!-- FLEX CONTAINER for items -->
+                    <div class="menu-item">
+                        {% for item in items %}
+                            <div class="vivo">
+                                <img src="{{ item.image }}" alt="{{ item.name }}">
+                                <h2>{{ item.name }}</h2>
+                                <p>prize : ₹ <b>{{ item.price }}</b></p>
+                                <button onclick="addToCart('{{ item.name }}', '{{ item.price }}')">Add to Cart</button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+            
+
+            
+            <div class="cart-icon" onclick="window.location.href='cart'">
+                🧺
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+
+            <script>
+                function addToCart(name, price) {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ name, price });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                alert(`${name} added to cart!`);
+                }
+
+                function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                document.getElementById('cart-count').textContent = cart.length;
+                }
+
+            
+                updateCartCount();
+            </script>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const categories = ['coffee', 'juices', 'milkshake', 'Pizza','tiffin','Ice-Cream','Burger','nodiels','Sandwiches','veg-meals','non-veg meals','Veg-Biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','Mutton-Biryani'];
+
+                    categories.forEach(category => {
+                    const container = document.getElementById(category);
+                    const items = JSON.parse(localStorage.getItem(category)) || [];
+
+                    items.forEach(item => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}">
+                        <h2>${item.title}</h2>
+                        <p>Price: ₹${item.price}</p>
+                        <button onclick="addToCart('${item.title}', ${item.price})">Add to Cart</button>
+                        `;
+                        container.appendChild(itemDiv);
+                    });
+                    });
+                });
+                </script>
+
+
+            
+
+
+    </main>
+</body>
+</html>

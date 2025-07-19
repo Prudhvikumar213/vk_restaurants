@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    .order-summary {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .order-total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Order Placed Successfully!</h1>
+  <div class="order-summary">
+    <h2>Order Summary:</h2>
+    <div id="order-items"></div>
+    <div id="order-total" class="order-total"></div>
+  </div>
+  <a href="foodmenu" style="padding-left: 40%;"> <button  style="color: #333;"><b>back to menu </b></button></a>
+
+  <script>
+    const orderData = JSON.parse(localStorage.getItem('orderData')) || [];
+
+    const itemsContainer = document.getElementById('order-items');
+    const totalDiv = document.getElementById('order-total');
+
+    let total = 0;
+
+    orderData.forEach(item => {
+      total += item.price * item.quantity;
+
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'order-item';
+      itemDiv.innerHTML = `
+        <span>${item.name} × ${item.quantity}</span>
+        <span>₹${(item.price * item.quantity).toFixed(2)}</span>
+      `;
+      itemsContainer.appendChild(itemDiv);
+    });
+
+    totalDiv.textContent = `Total: ₹${total.toFixed(2)}`;
+
+    // Optional: Clear cart after placing the order
+    localStorage.removeItem('cart');
+  </script>
+
+</body>
+</html>
