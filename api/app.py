@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 import hashlib
 from pymongo import MongoClient
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder="../static",template_folder="../templates")
 app.secret_key = "your_secure_secret_key"
 
 # MongoDB connection
