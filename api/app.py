@@ -26,8 +26,6 @@ def get_db():
         collection = db["menu_items"]
     return db, users, collection
 
-# Initialize DB once at startup
-db, users, collection = get_db()
 
 # Categories
 CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
