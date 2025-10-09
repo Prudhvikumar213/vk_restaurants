@@ -3,9 +3,6 @@ import hashlib
 import os
 from pymongo import MongoClient
 
-app = Flask(__name__,static_folder="../static",template_folder="../templates")
-app.secret_key = "your_secure_secret_key"
-
 # MongoDB connection
 app = Flask(__name__, static_folder="../static", template_folder="../templates")
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_secret_key")
