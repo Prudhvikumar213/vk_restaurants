@@ -58,12 +58,14 @@ def remove_item(category, name):
 # Routes
 @app.route('/')
 def home():
+    db, users, collection = get_db()
     if 'email' in session:
         return redirect('/admin-dashboard') if session['role'] == 'admin' else redirect('/foodmenu')
     return redirect('/login')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
@@ -77,6 +79,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -91,12 +94,14 @@ def login():
 
 @app.route('/admin-dashboard')
 def admin_dashboard():
+    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     return render_template('admin_dashboard.html', categories=CATEGORIES, email=session['email'])
 
 @app.route('/add_item', methods=['POST'])
 def add_menu_item():
+    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     add_item(
@@ -109,6 +114,7 @@ def add_menu_item():
 
 @app.route('/remove_item', methods=['POST'])
 def remove_menu_item():
+    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     remove_item(request.form['category'], request.form['name'])
@@ -116,6 +122,7 @@ def remove_menu_item():
 
 @app.route('/foodmenu')
 def foodmenu():
+    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'user':
         if 'email' not in session or session['role'] != 'admin':
             return redirect('/login')
