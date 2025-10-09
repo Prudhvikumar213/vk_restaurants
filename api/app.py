@@ -6,10 +6,27 @@ app = Flask(__name__,static_folder="../static",template_folder="../templates")
 app.secret_key = "your_secure_secret_key"
 
 # MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
-db = client["registration"]
-users = db["user"]
-collection = db["menu_items"]
+app = Flask(__name__, static_folder="../static", template_folder="../templates")
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_secret_key")
+
+# MongoDB Atlas connection (reused globally)
+client = None
+db = None
+user = None
+collection = None
+
+def get_db():
+    global client, db, user, collection
+    if not client:
+        client = MongoClient(os.environ["MONGODB_URI"])
+
+        db = client[os.environ.get("DATABASE_NAME", "registration")]
+        users = db["user"]
+        collection = db["menu_items"]
+    return db, users, collection
+
+# Initialize DB once at startup
+db, users, collection = get_db()
 
 # Categories
 CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
