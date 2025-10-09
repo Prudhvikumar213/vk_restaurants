@@ -1,12 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/app.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "api/app.py" }
-  ]
+  "builds": [{
+    "src": "app.py",
+    "use": "@vercel/python"
+  }],
+  "routes": [{
+    "src": "/(.*)",
+    "dest": "app.py"
+  }],
+  "env": {
+    "FLASK_SECRET_KEY": "your-secret",
+    "MONGODB_URI": "your-uri",
+    "DATABASE_NAME": "your-db"
+  }
 }
