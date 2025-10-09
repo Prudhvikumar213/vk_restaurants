@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 import hashlib
+import os
 from pymongo import MongoClient
 
 app = Flask(__name__,static_folder="../static",template_folder="../templates")
