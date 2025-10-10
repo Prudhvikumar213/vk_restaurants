@@ -49,32 +49,57 @@ def home():
         return redirect('/admin-dashboard') if session['role'] == 'admin' else redirect('/foodmenu')
     return redirect('/login')
 
+import traceback
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        email = request.form['email']
-        password = generate_password_hash(request.form['password'])
+        try:
+            email = request.form.get('email')
+            password = request.form.get('password')
 
-        if users.find_one({"email": email}):
-            return render_template('register.html', error="Email already registered.")
-        
-        users.insert_one({"email": email, "password": password, "role": "user"})
-        return redirect('/login')
+            if not email or not password:
+                return render_template('register.html', error="Email and Password are required.")
+
+            hashed_password = generate_password_hash(password)
+
+            if users.find_one({"email": email}):
+                return render_template('register.html', error="Email already registered.")
+
+            users.insert_one({"email": email, "password": hashed_password, "role": "user"})
+            return redirect('/login')
+
+        except Exception as e:
+            print("Exception in register:", e)
+            traceback.print_exc()
+            return render_template('register.html', error="Internal server error occurred.")
     return render_template('register.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        user = users.find_one({"email": email})
+        try:
+            email = request.form.get('email')
+            password = request.form.get('password')
 
-        if user and check_password_hash(user['password'], password):
-            session['email'] = user['email']
-            session['role'] = user['role']
-            return redirect('/admin-dashboard' if user['role'] == 'admin' else '/foodmenu')
-        return render_template('login.html', error="Invalid email or password.")
+            if not email or not password:
+                return render_template('login.html', error="Email and Password required.")
+
+            user = users.find_one({"email": email})
+
+            if user and check_password_hash(user['password'], password):
+                session['email'] = user['email']
+                session['role'] = user['role']
+                return redirect('/admin-dashboard' if user['role'] == 'admin' else '/foodmenu')
+            else:
+                return render_template('login.html', error="Invalid email or password.")
+        except Exception as e:
+            print("Exception in login:", e)
+            traceback.print_exc()  # Prints full traceback to console/logs
+            return render_template('login.html', error="Internal server error occurred.")
     return render_template('login.html')
+
 
 @app.route('/admin-dashboard')
 def admin_dashboard():
