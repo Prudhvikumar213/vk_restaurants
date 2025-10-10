@@ -1,16 +1,11 @@
 {
-  "version": 2,
-  "builds": [{
-    "src": "app.py",
-    "use": "@vercel/python"
-  }],
-  "routes": [{
-    "src": "/(.*)",
-    "dest": "app.py"
-  }],
-  "env": {
-    "FLASK_SECRET_KEY": "your-secret",
-    "MONGODB_URI": "your-uri",
-    "DATABASE_NAME": "your-db"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/app.py": {
+      "runtime": "python3.11",
+      "maxDuration": 30,
+      "memory": 1024,
+      "includeFiles": ["templates/**", "static/**"]
+    }
   }
 }
