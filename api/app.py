@@ -3,30 +3,18 @@ import hashlib
 import os
 from pymongo import MongoClient
 
-app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", "your_secure_key_here")
+app = Flask(__name__,static_folder="../static",template_folder="../templates")
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "your_secure_secret_key")
+
+MONGODB_URI = os.getenv("MONGODB_URI")
+if not MONGODB_URI:
+    raise Exception("MONGODB_URI environment variable not set")
 
 # MongoDB connection
-client = MongoClient(os.environ["MONGODB_URI"])
-db = client[os.environ.get("DATABASE_NAME", "registration")]
+client = MongoClient(MONGODB_URI)
+db = client["registration"]
 users = db["user"]
 collection = db["menu_items"]
-
-
-client = None
-db = None
-users = None
-collection = None
-
-def get_db():
-    global client, db, users, collection
-    if not client:
-        client = MongoClient(os.environ["MONGODB_URI"], serverSelectionTimeoutMS=5000)
-        client.server_info()  # Force connection check
-        db = client[os.environ.get("DATABASE_NAME", "registration")]
-        users = db["user"]
-        collection = db["menu_items"]
-    return db, users, collection
 
 # Categories
 CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
@@ -40,7 +28,6 @@ def check_password_hash(hashed_password, input_password):
 
 # Add item to DB
 def add_item(category, name, price, image_url):
-    db, users, collection = get_db()
     collection.insert_one({
         "category": category.lower(),
         "name": name,
@@ -50,7 +37,6 @@ def add_item(category, name, price, image_url):
 
 # Remove item from DB
 def remove_item(category, name):
-    db, users, collection = get_db()
     return collection.delete_one({
         "category": category.lower(),
         "name": name.lower(),
@@ -65,7 +51,6 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
@@ -79,7 +64,6 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -94,15 +78,12 @@ def login():
 
 @app.route('/admin-dashboard')
 def admin_dashboard():
-    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     return render_template('admin_dashboard.html', categories=CATEGORIES, email=session['email'])
 
 @app.route('/add_item', methods=['POST'])
 def add_menu_item():
-    db, users, collection = get_db()
-
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     add_item(
@@ -115,7 +96,6 @@ def add_menu_item():
 
 @app.route('/remove_item', methods=['POST'])
 def remove_menu_item():
-    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     remove_item(request.form['category'], request.form['name'])
@@ -126,7 +106,6 @@ def foodmenu():
     if 'email' not in session or session['role'] != 'user':
         if 'email' not in session or session['role'] != 'admin':
             return redirect('/login')
-            db, users, collection = get_db()
 
     menu_by_category = {}
     for category in CATEGORIES:
@@ -160,4 +139,5 @@ def logout():
     session.clear()
     return redirect('/login')
 
-handler = app
+if __name__ == '__main__':
+    app.run(debug=True)
