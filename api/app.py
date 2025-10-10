@@ -1,15 +1,32 @@
 from flask import Flask, render_template, request, redirect, session
 import hashlib
+import os
 from pymongo import MongoClient
 
-app = Flask(__name__,static_folder="../static",template_folder="../templates")
+app = Flask(__name__)
 app.secret_key = "your_secure_secret_key"
 
 # MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
-db = client["registration"]
+client = MongoClient(os.environ["MONGODB_URI"])
+db = client[os.environ.get("DATABASE_NAME", "registration")]
 users = db["user"]
 collection = db["menu_items"]
+
+
+client = None
+db = None
+users = None
+collection = None
+
+def get_db():
+    global client, db, users, collection
+    if not client:
+        client = MongoClient(os.environ["MONGODB_URI"], serverSelectionTimeoutMS=5000)
+        client.server_info()  # Force connection check
+        db = client[os.environ.get("DATABASE_NAME", "registration")]
+        users = db["user"]
+        collection = db["menu_items"]
+    return db, users, collection
 
 # Categories
 CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
@@ -40,12 +57,14 @@ def remove_item(category, name):
 # Routes
 @app.route('/')
 def home():
+    db, users, collection = get_db()
     if 'email' in session:
         return redirect('/admin-dashboard') if session['role'] == 'admin' else redirect('/foodmenu')
     return redirect('/login')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
@@ -59,6 +78,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -73,12 +93,15 @@ def login():
 
 @app.route('/admin-dashboard')
 def admin_dashboard():
+    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     return render_template('admin_dashboard.html', categories=CATEGORIES, email=session['email'])
 
 @app.route('/add_item', methods=['POST'])
-def add_menu_item():
+def add_menu_item()
+    db, users, collection = get_db()
+
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     add_item(
@@ -91,6 +114,7 @@ def add_menu_item():
 
 @app.route('/remove_item', methods=['POST'])
 def remove_menu_item():
+    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     remove_item(request.form['category'], request.form['name'])
@@ -134,5 +158,4 @@ def logout():
     session.clear()
     return redirect('/login')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+handler = app
