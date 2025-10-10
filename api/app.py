@@ -100,7 +100,7 @@ def admin_dashboard():
     return render_template('admin_dashboard.html', categories=CATEGORIES, email=session['email'])
 
 @app.route('/add_item', methods=['POST'])
-def add_menu_item()
+def add_menu_item():
     db, users, collection = get_db()
 
     if 'email' not in session or session['role'] != 'admin':
