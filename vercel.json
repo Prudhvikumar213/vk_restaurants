@@ -5,7 +5,13 @@
       "runtime": "python3.11",
       "maxDuration": 30,
       "memory": 1024,
-      "includeFiles": ["templates/**", "static/**"]
+      "includeFiles": "templates/**, static/**"
     }
-  }
+  },
+  "builds": [
+    { "src": "api/app.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "api/app.py" }
+  ]
 }
