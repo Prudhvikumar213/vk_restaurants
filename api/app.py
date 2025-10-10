@@ -17,12 +17,16 @@ collection = None
 def get_db():
     global client, db, users, collection
     if not client:
-        client = MongoClient(os.environ["MONGODB_URI"])
-        db = client[os.environ.get("DATABASE_NAME", "registration")]
-        users = db["user"]
-        collection = db["menu_items"]
+        try:
+            client = MongoClient(os.environ["MONGODB_URI"], serverSelectionTimeoutMS=5000)
+            client.server_info()  # Force connection check
+            db = client[os.environ.get("DATABASE_NAME", "registration")]
+            users = db["user"]
+            collection = db["menu_items"]
+        except Exception as e:
+            print("MongoDB connection error:", e)
+            raise e
     return db, users, collection
-
 
 # Categories
 CATEGORIES = [
