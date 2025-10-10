@@ -7,8 +7,13 @@ app = Flask(__name__,static_folder="../static",template_folder="../templates")
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "your_secure_secret_key")
 
 MONGODB_URI = os.getenv("MONGODB_URI")
-if not MONGODB_URI:
-    raise Exception("MONGODB_URI environment variable not set")
+
+if "tls=true" not in MONGODB_URI:
+    if "?" in MONGODB_URI:
+        MONGODB_URI += "&tls=true"
+    else:
+        MONGODB_URI += "?tls=true"
+
 
 # MongoDB connection
 client = MongoClient(MONGODB_URI)
@@ -18,6 +23,15 @@ collection = db["menu_items"]
 
 # Categories
 CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
+
+
+@app.route('/testdb')
+def test_db():
+    try:
+        client.admin.command('ping')
+        return "MongoDB connection successful!"
+    except Exception as e:
+        return f"MongoDB connection failed: {e}"
 
 # Password Hashing
 def generate_password_hash(password):
