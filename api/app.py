@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 import hashlib
 import os
-from vercel import Vercel
 from pymongo import MongoClient
 
 app = Flask(__name__)
