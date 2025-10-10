@@ -40,6 +40,7 @@ def check_password_hash(hashed_password, input_password):
 
 # Add item to DB
 def add_item(category, name, price, image_url):
+    db, users, collection = get_db()
     collection.insert_one({
         "category": category.lower(),
         "name": name,
@@ -49,6 +50,7 @@ def add_item(category, name, price, image_url):
 
 # Remove item from DB
 def remove_item(category, name):
+    db, users, collection = get_db()
     return collection.delete_one({
         "category": category.lower(),
         "name": name.lower(),
@@ -57,7 +59,6 @@ def remove_item(category, name):
 # Routes
 @app.route('/')
 def home():
-    db, users, collection = get_db()
     if 'email' in session:
         return redirect('/admin-dashboard') if session['role'] == 'admin' else redirect('/foodmenu')
     return redirect('/login')
@@ -125,6 +126,7 @@ def foodmenu():
     if 'email' not in session or session['role'] != 'user':
         if 'email' not in session or session['role'] != 'admin':
             return redirect('/login')
+            db, users, collection = get_db()
 
     menu_by_category = {}
     for category in CATEGORIES:
