@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, session
 import hashlib
 import os
+from vercel import Vercel
 from pymongo import MongoClient
 
 app = Flask(__name__)
-app.secret_key = "your_secure_secret_key"
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "your_secure_key_here")
 
 # MongoDB connection
 client = MongoClient(os.environ["MONGODB_URI"])
