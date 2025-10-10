@@ -1,40 +1,18 @@
 from flask import Flask, render_template, request, redirect, session
 import hashlib
-import os
 from pymongo import MongoClient
 
-# Flask setup
-app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_secret_key")
-
-# MongoDB globals
-client = None
-db = None
-users = None
-collection = None
+app = Flask(__name__,static_folder="../static",template_folder="../templates")
+app.secret_key = "your_secure_secret_key"
 
 # MongoDB connection
-def get_db():
-    global client, db, users, collection
-    if not client:
-        try:
-            client = MongoClient(os.environ["MONGODB_URI"], serverSelectionTimeoutMS=5000)
-            client.server_info()  # Force connection check
-            db = client[os.environ.get("DATABASE_NAME", "registration")]
-            users = db["user"]
-            collection = db["menu_items"]
-        except Exception as e:
-            print("MongoDB connection error:", e)
-            raise e
-    return db, users, collection
+client = MongoClient("mongodb://localhost:27017/")
+db = client["registration"]
+users = db["user"]
+collection = db["menu_items"]
 
 # Categories
-CATEGORIES = [
-    'cofee', 'tiffin', 'juices', 'milkshake', 'ice-cream',
-    'burger', 'pizza', 'sandwiches', 'nodiels',
-    'veg-meals', 'non-veg meals', 'veg-biryani', 'egg-biryani',
-    'hyderabadi-chicken-biryani', 'fish-biryani', 'mutton-biryani'
-]
+CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
 
 # Password Hashing
 def generate_password_hash(password):
@@ -59,18 +37,15 @@ def remove_item(category, name):
         "name": name.lower(),
     })
 
-
 # Routes
 @app.route('/')
 def home():
-    db, users, collection = get_db()
     if 'email' in session:
         return redirect('/admin-dashboard') if session['role'] == 'admin' else redirect('/foodmenu')
     return redirect('/login')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = generate_password_hash(request.form['password'])
@@ -84,7 +59,6 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    db, users, collection = get_db()
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -99,14 +73,12 @@ def login():
 
 @app.route('/admin-dashboard')
 def admin_dashboard():
-    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     return render_template('admin_dashboard.html', categories=CATEGORIES, email=session['email'])
 
 @app.route('/add_item', methods=['POST'])
 def add_menu_item():
-    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     add_item(
@@ -119,7 +91,6 @@ def add_menu_item():
 
 @app.route('/remove_item', methods=['POST'])
 def remove_menu_item():
-    db, users, collection = get_db()
     if 'email' not in session or session['role'] != 'admin':
         return redirect('/login')
     remove_item(request.form['category'], request.form['name'])
@@ -127,9 +98,9 @@ def remove_menu_item():
 
 @app.route('/foodmenu')
 def foodmenu():
-    db, users, collection = get_db()
-    if 'email' not in session:
-        return redirect('/login')
+    if 'email' not in session or session['role'] != 'user':
+        if 'email' not in session or session['role'] != 'admin':
+            return redirect('/login')
 
     menu_by_category = {}
     for category in CATEGORIES:
@@ -141,18 +112,21 @@ def foodmenu():
 def cart():
     if 'email' not in session or session.get('role') != 'user':
         return redirect('/login')
+
     return render_template('cart.html', email=session['email'])
 
 @app.route('/placeorder')
 def placeorder():
     if 'email' not in session or session.get('role') != 'user':
         return redirect('/login')
+
     return render_template('placeorder.html', email=session['email'])
 
 @app.route('/profile')
 def profile():
     if 'email' not in session or session.get('role') != 'user':
         return redirect('/login')
+
     return render_template('profile.html', email=session['email'])
 
 @app.route('/logout')
@@ -160,6 +134,5 @@ def logout():
     session.clear()
     return redirect('/login')
 
-
-# Required for Vercel
-handler = app
+if __name__ == '__main__':
+    app.run(debug=True)
