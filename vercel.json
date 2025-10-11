@@ -1,21 +1,13 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "app.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb" }
-    }
+    { "src": "app.py", "use": "@vercel/python" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "app.py"
-    }
+    { "src": "/(.*)", "dest": "app.py" }
   ],
   "env": {
-    "MONGODB_URI": "mongodb+srv://mprudhvikumar213_db_user:Ammulu93@cluster0.xe0b3ll.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    "FLASK_SECRET_KEY": "your_secure_secret_key"
+    "MONGODB_URI": "@mongodb_uri",
+    "FLASK_SECRET_KEY": "@flask_secret_key"
   }
 }
-
