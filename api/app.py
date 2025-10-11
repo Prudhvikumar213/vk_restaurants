@@ -1,37 +1,18 @@
 from flask import Flask, render_template, request, redirect, session
 import hashlib
-import os
 from pymongo import MongoClient
 
 app = Flask(__name__,static_folder="../static",template_folder="../templates")
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "your_secure_secret_key")
-
-MONGODB_URI = os.getenv("MONGODB_URI")
-
-if "tls=true" not in MONGODB_URI:
-    if "?" in MONGODB_URI:
-        MONGODB_URI += "&tls=true"
-    else:
-        MONGODB_URI += "?tls=true"
-
+app.secret_key = "your_secure_secret_key"
 
 # MongoDB connection
-client = MongoClient(MONGODB_URI)
+client = MongoClient("mongodb+srv://mprudhvikumar213_db_user:Ammulu93@cluster0.xe0b3ll.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client["registration"]
 users = db["user"]
 collection = db["menu_items"]
 
 # Categories
 CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
-
-
-@app.route('/testdb')
-def test_db():
-    try:
-        client.admin.command('ping')
-        return "MongoDB connection successful!"
-    except Exception as e:
-        return f"MongoDB connection failed: {e}"
 
 # Password Hashing
 def generate_password_hash(password):
@@ -63,57 +44,32 @@ def home():
         return redirect('/admin-dashboard') if session['role'] == 'admin' else redirect('/foodmenu')
     return redirect('/login')
 
-import traceback
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        try:
-            email = request.form.get('email')
-            password = request.form.get('password')
+        email = request.form['email']
+        password = generate_password_hash(request.form['password'])
 
-            if not email or not password:
-                return render_template('register.html', error="Email and Password are required.")
-
-            hashed_password = generate_password_hash(password)
-
-            if users.find_one({"email": email}):
-                return render_template('register.html', error="Email already registered.")
-
-            users.insert_one({"email": email, "password": hashed_password, "role": "user"})
-            return redirect('/login')
-
-        except Exception as e:
-            print("Exception in register:", e)
-            traceback.print_exc()
-            return render_template('register.html', error="Internal server error occurred.")
+        if users.find_one({"email": email}):
+            return render_template('register.html', error="Email already registered.")
+        
+        users.insert_one({"email": email, "password": password, "role": "user"})
+        return redirect('/login')
     return render_template('register.html')
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        try:
-            email = request.form.get('email')
-            password = request.form.get('password')
+        email = request.form['email']
+        password = request.form['password']
+        user = users.find_one({"email": email})
 
-            if not email or not password:
-                return render_template('login.html', error="Email and Password required.")
-
-            user = users.find_one({"email": email})
-
-            if user and check_password_hash(user['password'], password):
-                session['email'] = user['email']
-                session['role'] = user['role']
-                return redirect('/admin-dashboard' if user['role'] == 'admin' else '/foodmenu')
-            else:
-                return render_template('login.html', error="Invalid email or password.")
-        except Exception as e:
-            print("Exception in login:", e)
-            traceback.print_exc()  # Prints full traceback to console/logs
-            return render_template('login.html', error="Internal server error occurred.")
+        if user and check_password_hash(user['password'], password):
+            session['email'] = user['email']
+            session['role'] = user['role']
+            return redirect('/admin-dashboard' if user['role'] == 'admin' else '/foodmenu')
+        return render_template('login.html', error="Invalid email or password.")
     return render_template('login.html')
-
 
 @app.route('/admin-dashboard')
 def admin_dashboard():
