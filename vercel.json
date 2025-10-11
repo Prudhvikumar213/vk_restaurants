@@ -1,13 +1,20 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "api/app.py": {
-      "runtime": "python3.11",
-      "maxDuration": 30,
-      "memory": 1024,
-      "includeFiles": ["templates/**", "static/**"]
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
-  },
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
+  ],
   "env": {
     "MONGODB_URI": "@mongodb_uri",
     "FLASK_SECRET_KEY": "@flask_secret_key"
