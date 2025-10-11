@@ -11,6 +11,6 @@
   ],
   "env":
   {
-    "MONGODB_URI":"@mongodb_uri",
+    "MONGODB_URI":"mongodb+srv://mprudhvikumar213_db_user:Ammulu93@cluster0.xe0b3ll.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
   }
 }
