@@ -58,6 +58,7 @@
         flex: 7 10 20%;
         margin-left: 7px;
       width: 400px;
+      max-width: 300px;
       background:#f8f8f8;
       border-radius: 30px;
       overflow: hidden;
@@ -201,6 +202,48 @@
 .vivo p {
     text-align: right;
 }
+
+    /* ✅ Responsive Design for mobile */
+    @media (max-width: 1024px) {
+      .menu-item {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-box {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .menu-item {
+        grid-template-columns: 1fr;
+      }
+
+      .vivo img {
+        height: 150px;
+      }
+
+      .food-category {
+        padding: 10px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      button {
+        font-size: 14px;
+        height: 35px;
+      }
+
+      .card {
+        max-width: 90%;
+      }
+
+      .hh {
+        font-size: 200%;
+        text-align: center;
+      }
     
     
 
