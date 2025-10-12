@@ -4,9 +4,87 @@
     <title>Admin Dashboard - VK Restaurant</title>
 
     <style>
-      header{
-            margin-top: 0%;
-        }
+      header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* stays above all content */
+  }
+     
+    
+    .ord {
+    background-color: #573666;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: solid 2px cyan;
+    padding: 10px 20px;
+  }
+
+  .logo img {
+    width: 60px;
+    height: 60px;
+    margin-left: 40%;
+    border-radius: 50%;
+  }
+
+  .hh {
+    color: #ffd966;
+    font-size: 2rem;
+    padding-left: 2%;
+    flex: 1;
+    text-shadow: 2px 2px 4px #000;
+    margin: 0;
+  }
+
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .user-actions a {
+    text-decoration: none;
+    color: red;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .user-actions img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  /* ---------- RESPONSIVE FIXES ---------- */
+  @media (max-width: 768px) {
+    .ord {
+      justify-content: space-around;
+      padding: 6px 8px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .hh {
+      font-size: 1.4rem;
+      flex: none;
+    }
+
+    .right img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .logout {
+      font-size: 12px;
+      padding: 5px 8px;
+    }
+  }
     body {
       font-family: Arial, sans-serif;
       background-color: #eee;
