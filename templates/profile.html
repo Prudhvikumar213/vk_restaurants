@@ -4,8 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
+    <style>
+         header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* stays above all content */
+  }
+     
+    
+    .ord {
+    background-color: #573666;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: solid 2px cyan;
+    padding: 10px 20px;
+  }
+
+  .logo img {
+    width: 60px;
+    height: 60px;
+    margin-left: 40%;
+    border-radius: 50%;
+  }
+
+  .hh {
+    color: #ffd966;
+    font-size: 2rem;
+    padding-left: 2%;
+    flex: 1;
+    text-shadow: 2px 2px 4px #000;
+    margin: 0;
+  }
+
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .user-actions a {
+    text-decoration: none;
+    color: red;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .user-actions img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  /* ---------- RESPONSIVE FIXES ---------- */
+  @media (max-width: 768px) {
+    .ord {
+      justify-content: space-around;
+      padding: 6px 8px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .hh {
+      font-size: 1.4rem;
+      flex: none;
+    }
+
+    .right img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .logout {
+      font-size: 12px;
+      padding: 5px 8px;
+    }
+  }
+    </style>
 </head>
 <body>
+     <header>
+      <div class="ord">
+        <div class="logo">
+          <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
+        </div>
+    
+        <h3 class="hh">Restaurants</h3>
+    
+        <div class="user-actions">
+          <a href="profile" class="profile">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
+          </a>
+          <a href="logout" class="logout">Logout</a>
+        </div>
+      </div>
+    </header>
     <h1>profile</h1>
     Welcome,{{email}}
 </body>
