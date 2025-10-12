@@ -173,18 +173,19 @@
             text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
     .login-container {
         justify-content: center;
-        padding: 10px;
+        flex-direction: column;
+        padding: 20px;
     }
 
     .login-box {
-        width: 100%;
+        width: 90%;
         margin-left: 0;
+        padding: 30px;
         border-bottom-left-radius: 20%;
         border-top-right-radius: 20%;
-        padding: 30px;
     }
 
     .login-box h2 {
@@ -207,17 +208,26 @@
     }
 }
 
-/* -------------------- */
-/* 📱 Small Phones */
-/* -------------------- */
 @media (max-width: 480px) {
+    header img {
+        width: 40px;
+        height: 40px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
     .login-box {
+        width: 90%;
         padding: 25px;
         border-radius: 20px;
+        border-bottom-left-radius: 0%;
+        border-top-right-radius: 0%;
     }
 
     .login-box h2 {
-        font-size: 1.7em;
+        font-size: 1.8em;
     }
 
     form label {
