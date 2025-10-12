@@ -173,76 +173,50 @@
             text-decoration: underline;
         }
 
-       @media (max-width: 768px) {
-    .login-container {
-        justify-content: center;
-        flex-direction: column;
-        padding: 20px;
-    }
+       @media (min-width: 768px) {
+            .login-container {
+                justify-content: space-around;
+                flex-direction: row;
+                padding-top: 120px;
+            }
 
-    .login-box {
-        width: 90%;
-        margin-left: 0;
-        padding: 30px;
-        border-bottom-left-radius: 20%;
-        border-top-right-radius: 20%;
-    }
+            .side-image {
+                display: block;
+                width: 15%;
+                height: auto;
+            }
 
-    .login-box h2 {
-        font-size: 2em;
-    }
+            .login-box h2 {
+                font-size: 2.5em;
+            }
 
-    form label {
-        font-size: 120%;
-    }
+            header h1 {
+                font-size: 3em;
+            }
+        }
 
-    form input[type="email"],
-    form input[type="password"] {
-        font-size: 0.9em;
-        padding: 10px;
-    }
+        @media (max-width: 480px) {
+            header img {
+                width: 40px;
+                height: 40px;
+            }
 
-    form input[type="submit"] {
-        font-size: 0.95em;
-        padding: 10px;
-    }
-}
+            header h1 {
+                font-size: 1.8em;
+            }
 
-@media (max-width: 480px) {
-    header img {
-        width: 40px;
-        height: 40px;
-    }
+            .login-box {
+                width: 90%;
+                padding: 25px;
+                border-radius: 20px;
+                border-bottom-left-radius: 0%;
+                border-top-right-radius: 0%;
+            }
 
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    .login-box {
-        width: 90%;
-        padding: 25px;
-        border-radius: 20px;
-        border-bottom-left-radius: 0%;
-        border-top-right-radius: 0%;
-    }
-
-    .login-box h2 {
-        font-size: 1.8em;
-    }
-
-    form label {
-        font-size: 1em;
-    }
-
-    form input[type="email"],
-    form input[type="password"] {
-        font-size: 0.85em;
-    }
-
-    form input[type="submit"] {
-        font-size: 0.9em;
-    }
-}
+            .login-box h2 {
+                font-size: 1.8em;
+            }
+        }
 
     </style>
 </head>
