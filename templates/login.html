@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Login - VK Restaurant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
         margin: 0;
@@ -87,6 +88,51 @@
 
         .register-link a:hover {
             text-decoration: underline;
+        }
+
+         @media (min-width: 768px) {
+            .login-container {
+                justify-content: space-around;
+                flex-direction: row;
+                padding-top: 120px;
+            }
+
+            .side-image {
+                display: block;
+                width: 15%;
+                height: auto;
+            }
+
+            .login-box h2 {
+                font-size: 2.5em;
+            }
+
+            header h1 {
+                font-size: 3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header img {
+                width: 40px;
+                height: 40px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .login-box {
+                width: 90%;
+                padding: 25px;
+                border-radius: 20px;
+                border-bottom-left-radius: 0%;
+                border-top-right-radius: 0%;
+            }
+
+            .login-box h2 {
+                font-size: 1.8em;
+            }
         }
     </style>
     <link rel="icon" href="https://png.pngtree.com/png-clipart/20230623/original/pngtree-3d-login-button-icon-with-mouse-cursor-png-image_9205409.png">
