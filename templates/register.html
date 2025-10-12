@@ -172,6 +172,68 @@
         .register-link a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+    .login-container {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .login-box {
+        width: 100%;
+        margin-left: 0;
+        border-bottom-left-radius: 20%;
+        border-top-right-radius: 20%;
+        padding: 30px;
+    }
+
+    .login-box h2 {
+        font-size: 2em;
+    }
+
+    form label {
+        font-size: 120%;
+    }
+
+    form input[type="email"],
+    form input[type="password"] {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    form input[type="submit"] {
+        font-size: 0.95em;
+        padding: 10px;
+    }
+}
+
+/* -------------------- */
+/* 📱 Small Phones */
+/* -------------------- */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    .login-box h2 {
+        font-size: 1.7em;
+    }
+
+    form label {
+        font-size: 1em;
+    }
+
+    form input[type="email"],
+    form input[type="password"] {
+        font-size: 0.85em;
+    }
+
+    form input[type="submit"] {
+        font-size: 0.9em;
+    }
+}
+
     </style>
 </head>
 <body>
