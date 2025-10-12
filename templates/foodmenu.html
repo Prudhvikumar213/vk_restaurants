@@ -14,26 +14,83 @@
         main{
             margin-top:0%;
         }
-        header{
-            margin-top: 0%;
-            height: 3%;
-        }
+         header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* stays above all content */
+  }
      
     
-    
-    .hh{
-         color:khaki;
-         margin: 0%;
-         margin-top: 3%;
-         font-size:300%;
-         background-color: #573666;
-        text-align: left;
-        padding-left: 20px;
-        margin-left: -2%;
-        text-shadow: 7px 10px 12px black;
-       
+    .ord {
+    background-color: #573666;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: solid 2px cyan;
+    padding: 10px 20px;
+  }
 
+  .logo img {
+    width: 60px;
+    height: 60px;
+    margin-left: 40%;
+    border-radius: 50%;
+  }
+
+  .hh {
+    color: #ffd966;
+    font-size: 2rem;
+    padding-left: 2%;
+    flex: 1;
+    text-shadow: 2px 2px 4px #000;
+    margin: 0;
+  }
+
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .user-actions a {
+    text-decoration: none;
+    color: red;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .user-actions img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  /* ---------- RESPONSIVE FIXES ---------- */
+  @media (max-width: 768px) {
+    .ord {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
     }
+
+    .hh {
+      font-size: 1.6rem;
+    }
+
+    .user-actions {
+      gap: 10px;
+    }
+
+    .user-actions img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+       
     .pru{
         
         background-color: beige;
@@ -45,6 +102,8 @@
         font-size:medium;
         margin-top: 0%;
         width: 100%;
+        margin-top: 0%;
+        padding-top: 6%;
     }
   .card-box{
        display: flex;
@@ -254,23 +313,21 @@
 </head>
 <body>
 
-    <header 
-        <div class="ord" style="background-color: #573666;display: flex; gap: 0px; flex-wrap: wrap; justify-content: left;border-bottom: solid;border-color:cyan; " id="ord">
-            <p style="width: 10%; height: 5%; margin-left: 6%; margin-top: 1%; "><img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="image" height="7%" width="7%"></p>
-            <h3 class="hh"> Restaurants</h3>
-            <p>
-                <a  href="" style="color:red; font-size: large; text-decoration: none; margin-left: 95%; width: 2%; height: 4%;"></a>
-                
-                
-            </p>
-            <p style="width: 5%; width: 5%;">
-                <a  href="profile" style="color:red; font-size: large; text-decoration: none; margin-left: 20%; width: 2%; height: 4%;"><img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt=" image" width="5%" height="5%"></a>
-                <a  href="logout" style="color:red; font-size: large; text-decoration: none; margin-left: 40%;">logout</a>
-            </p>
-            
+    <header>
+      <div class="ord">
+        <div class="logo">
+          <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
         </div>
-            
-            
+    
+        <h3 class="hh">Restaurants</h3>
+    
+        <div class="user-actions">
+          <a href="profile" class="profile">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
+          </a>
+          <a href="logout" class="logout">Logout</a>
+        </div>
+      </div>
     </header>
 
     <main>
