@@ -158,8 +158,25 @@
   </style>
 </head>
 <body>
+
+    <header>
+      <div class="ord">
+        <div class="logo">
+          <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
+        </div>
+    
+        <h3 class="hh">Restaurants</h3>
+    
+        <div class="user-actions">
+          <a href="profile" class="profile">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
+          </a>
+          <a href="logout" class="logout">Logout</a>
+        </div>
+      </div>
+    </header>
   
-    <h2>Welcome, Admin: {{ email }}</h2> <a href="/logout" style="text-decoration: none;"><button style="margin-left: 85%;">Logout </button></a>
+    <h2 style="margin-top:15%">Welcome, Admin: {{ email }}</h2> <a href="/logout" style="text-decoration: none;"><button style="margin-left: 85%;">Logout </button></a>
     <div class="form-container">
       <a href="foodmenu"><button style="margin-left: 45%;">open menu </button></a>
       <h3>Add Menu Item</h3>
