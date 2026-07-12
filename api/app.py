@@ -10,6 +10,8 @@ client = MongoClient("mongodb+srv://mprudhvikumar213_db_user:Ammulu93@cluster0.x
 db = client["registration"]
 users = db["user"]
 collection = db["menu_items"]
+category_collection =db["category_images"]
+
 
 # Categories
 CATEGORIES = ['cofee', 'tiffin', 'juices','milkshake', 'ice-cream','burger','pizza','sandwiches','nodiels','veg-meals','non-veg meals','veg-biryani','egg-biryani','hyderabadi-chicken-biryani','fish-biryani','mutton-biryani']
@@ -103,10 +105,17 @@ def foodmenu():
             return redirect('/login')
 
     menu_by_category = {}
+    category_images = {}
     for category in CATEGORIES:
+        
         menu_by_category[category] = list(collection.find({"category": category}))
+        banner = category_collection.find_one({"category": category})
+
+        if banner:
+            category_images[category] = banner["image"]
     
-    return render_template('foodmenu.html', menu_by_category=menu_by_category, email=session['email'])
+    return render_template('foodmenu.html', menu_by_category=menu_by_category,category_images=category_images, email=session['email'])
+
 
 @app.route('/cart')
 def cart():
@@ -122,6 +131,7 @@ def placeorder():
 
     return render_template('placeorder.html', email=session['email'])
 
+
 @app.route('/profile')
 def profile():
     if 'email' not in session or session.get('role') != 'user':
@@ -133,6 +143,9 @@ def profile():
 def logout():
     session.clear()
     return redirect('/login')
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
