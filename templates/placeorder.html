@@ -9,42 +9,61 @@
       max-width: 600px;
       margin: auto;
       padding: 20px;
-      background-color: #f4f4f4;
+      background:radial-gradient(circle at right,#4a004d 0%,#250027 35%,#170018 70%,#0d0010 100%);
     }
-
-    header {
+    html{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   /* Hide left/right scrolling */
+    overflow-y: auto;
+    }
+     header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999; /* stays above all content */
   }
-     
+  .ord {
     
-    .ord {
-    background-color: #573666;
+    background: linear-gradient(90deg, #2C1220 0%, #201221 50%, #241224 100%);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    border-bottom: solid 2px cyan;
+    border-bottom: 3px solid #A33F15;
     padding: 10px 20px;
   }
 
   .logo img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-left: 40%;
     border-radius: 50%;
+    padding-left: 10%;
+
   }
 
   .hh {
-    color: #ffd966;
+    color: #F0B63A;
     font-size: 2rem;
-    padding-left: 2%;
+    padding-left: -2%;
     flex: 1;
     text-shadow: 2px 2px 4px #000;
     margin: 0;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    width: 30%;
+    
+  }
+  .hh p{
+    font-size: 45%;
+    margin-top: 0%;
+    padding-top: 0%;
+    text-align: center;
+    color: #F0B63A;
   }
 
   .user-actions {
@@ -66,43 +85,16 @@
     border-radius: 50%;
   }
 
-  /* ---------- RESPONSIVE FIXES ---------- */
-  @media (max-width: 768px) {
-    .ord {
-      justify-content: space-around;
-      padding: 6px 8px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-    }
-
-    .hh {
-      font-size: 1.4rem;
-      flex: none;
-    }
-
-    .right img {
-      width: 30px;
-      height: 30px;
-    }
-
-    .logout {
-      font-size: 12px;
-      padding: 5px 8px;
-    }
-  }
-
-    
-
     h1 {
-      color: #333;
+      color:white;
       text-align: center;
+      margin-top: 15%;
+      
     }
 
     .order-summary {
-      background: white;
+      background:black;
+      color: whitesmoke;
       padding: 20px;
       border-radius: 6px;
       margin-top: 20px;
@@ -124,89 +116,76 @@
       font-size: 18px;
       font-weight: bold;
       margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 2%;
     }
+    .order-item{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 1px;
+    border-bottom: 1px solid #ccc;
+    
 
-    @media (max-width: 768px) {
-    .order-summary {
-        padding: 15px;
-        margin: 10px;
-        border-radius: 10px;
-    }
-
-    .order-item {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 0;
-    }
-
-    .order-item span {
-        margin-bottom: 5px;
-        font-size: 0.95em;
-    }
-
-    .order-total {
-        text-align: center;
-        font-size: 16px;
-        margin-top: 15px;
-    }
-
-    h1 {
-        font-size: 1.8em;
-    }
 }
 
-@media (max-width: 480px) {
-    .order-summary {
-        padding: 10px;
-        margin: 5px;
-    }
+.order-img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    padding-left: 8%;
+  
 
-    .order-item {
-        flex-direction: column;
-        gap: 3px;
-        padding: 8px 0;
-    }
-
-    .order-item span {
-        font-size: 0.9em;
-    }
-
-    .order-total {
-        font-size: 15px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
 }
+button{
+        background:#FF8C00;
+        border:1PX solid #E65100;
+        outline: none;
+        width: 40%;
+      
+        margin-bottom: 3%;
+        font-weight: bold;
+        color: whitesmoke;
+        border-radius: 50px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        margin-left: 30%;
+        margin-top: 5%;
+        height:50px;
+        
+        
+    }
   </style>
 </head>
 <body>
-
   <header>
-      <div class="ord">
-        <div class="logo">
-          <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
-        </div>
-    
-        <h3 class="hh">Restaurants</h3>
-    
-        <div class="user-actions">
-          <a href="profile" class="profile">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
-          </a>
-          <a href="logout" class="logout">Logout</a>
-        </div>
-      </div>
-    </header>
+          <div class="ord">
+            <div class="logo">
+              <img src="https://cdn.corenexis.com/f/wyKdaZ54fUE.png" alt="logo">
+            </div>
+        
+            <h3 class="hh"> VK Restaurants
+                <p><i class="fa-solid fa-leaf" style="color: green;"></i> Good Food, Great Moments <i class="fa-solid fa-leaf" style="color: green;"></i></p>
+            </h3>
+            
+        
+            <div class="user-actions">
+              <a href="profile" class="profile">
+                <i class="fa-regular fa-circle-user"></i>
+                
+              </a>
+             
+            </div>
+          </div>
+    </header> 
 
-  <h1 style="margin-top:15%">Order Placed Successfully!</h1>
+  <h1>Order Placed Successfully!</h1>
   <div class="order-summary">
-    <h2>Order Summary:</h2>
+    <h2 style="text-align: center;">Order Summary:</h2>
     <div id="order-items"></div>
     <div id="order-total" class="order-total"></div>
   </div>
-  <a href="foodmenu" style="padding-left: 40%;"> <button  style="color: #333;"><b>back to menu </b></button></a>
+  <button onclick="backToMenu() " style="height: fit-content;">back to menu</button>
 
   <script>
     const orderData = JSON.parse(localStorage.getItem('orderData')) || [];
@@ -222,6 +201,7 @@
       const itemDiv = document.createElement('div');
       itemDiv.className = 'order-item';
       itemDiv.innerHTML = `
+         <img src="${item.image}" class="order-img">
         <span>${item.name} × ${item.quantity}</span>
         <span>₹${(item.price * item.quantity).toFixed(2)}</span>
       `;
@@ -233,6 +213,11 @@
     // Optional: Clear cart after placing the order
     localStorage.removeItem('cart');
   </script>
+  <script>
+function backToMenu() {
+    window.location.href = "{{ url_for('foodmenu') }}";
+}
+</script>
 
 </body>
 </html>
