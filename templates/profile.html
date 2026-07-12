@@ -5,43 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
     <style>
-         header {
+        body{
+        margin:0;
+        padding:0;
+        background:
+        radial-gradient(circle at top,#4a004d 0%,#250027 35%,#170018 70%,#0d0010 100%);
+        background-attachment: fixed;
+
+        }
+        main{
+            margin-top:0%;
+        }
+        html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   /* Hide left/right scrolling */
+    overflow-y: auto;
+    }
+        header {
     position: fixed;
-    top: 0;
+    top: fixed;
     left: 0;
     width: 100%;
     z-index: 999; /* stays above all content */
   }
      
     
-    .ord {
-    background-color: #573666;
+      .ord {
+    
+    background: linear-gradient(90deg, #121212 0%, #201221 50%, #121212 100%);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    border-bottom: solid 2px cyan;
+    border-bottom: 3px solid #A33F15;
     padding: 10px 20px;
   }
 
   .logo img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-left: 40%;
     border-radius: 50%;
+    padding-left: 10%;
+
   }
 
   .hh {
-    color: #ffd966;
+    color: #F0B63A;
     font-size: 2rem;
-    padding-left: 2%;
+    padding-left: -2%;
     flex: 1;
     text-shadow: 2px 2px 4px #000;
     margin: 0;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    width: 30%;
+    
+    
+  }
+  .hh p{
+    font-size: 45%;
+    margin-top: 0%;
+    padding-top: 0%;
+    margin-left: 0%;
+    text-align: center;
+    color: #F0B63A;
+  }
+  .hh h3{
+    text-align: center;
+    width: 30%;
   }
 
   .user-actions {
     display: flex;
+    justify-content:flex-end;
     align-items: center;
     gap: 15px;
   }
@@ -62,50 +102,53 @@
   /* ---------- RESPONSIVE FIXES ---------- */
   @media (max-width: 768px) {
     .ord {
-      justify-content: space-around;
-      padding: 6px 8px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
     }
 
     .hh {
-      font-size: 1.4rem;
-      flex: none;
+      font-size: 1.6rem;
     }
 
-    .right img {
-      width: 30px;
-      height: 30px;
+    .user-actions {
+      gap: 10px;
     }
 
-    .logout {
-      font-size: 12px;
-      padding: 5px 8px;
+    .user-actions img {
+      width: 35px;
+      height: 35px;
     }
   }
     </style>
 </head>
 <body>
-     <header>
-      <div class="ord">
-        <div class="logo">
-          <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
-        </div>
+    <header>
+          <div class="ord">
+            <div class="logo">
+              <img src="https://cdn.corenexis.com/f/wyKdaZ54fUE.png" alt="VK Logo">
+            </div>
+        
+            <h3 class="hh"> VK Restaurants
+                <p><i class="fa-solid fa-leaf" style="color: green;"></i> Good Food, Great Moments <i class="fa-solid fa-leaf" style="color: green;"></i></p>
+            </h3>
+            
+        
+            <div class="user-actions">
+              <a href="profile" class="profile">
+                <i class="fa-regular fa-circle-user" style="color: aliceblue;"></i>
+              </a>
+              <a href="logout" class="logout">Logout</a>
+              
+             
+            </div>
+          </div>
+        </header>
+    <h1 style="margin-top: 8%; color: white; ">profile</h1>
+    <div style="color: whitesmoke;">
+        Welcome,{{email}}
+    </div>
     
-        <h3 class="hh">Restaurants</h3>
-    
-        <div class="user-actions">
-          <a href="profile" class="profile">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
-          </a>
-          <a href="logout" class="logout">Logout</a>
-        </div>
-      </div>
-    </header>
-    <h1 style="padding-top:8%">profile</h1>
-    Welcome,{{email}}
 </body>
 </html>
