@@ -2,48 +2,69 @@
 <html>
 <head>
     <title>Register - VK Restaurant</title>
-    <style>
+   <style>
         body {
-        background-color: #2A294A;
         margin: 0;
         padding: 0;
         width: 100%;
         height: 100%;  
-        padding-top:3%
+        
+    
     }
-         header {
+    html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   /* Hide left/right scrolling */
+    overflow-y: auto;
+    
+}    
+     header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999; /* stays above all content */
   }
-     
+  .ord {
     
-    .ord {
-    background-color: #573666;
+    background: linear-gradient(90deg, #2C1220 0%, #201221 50%, #241224 100%);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    border-bottom: solid 2px cyan;
+    border-bottom: 3px solid #A33F15;
     padding: 10px 20px;
   }
 
   .logo img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-left: 40%;
     border-radius: 50%;
+    padding-left: 10%;
+
   }
 
   .hh {
-    color: #ffd966;
+    color: #F0B63A;
     font-size: 2rem;
-    padding-left: 2%;
+    padding-left: -2%;
     flex: 1;
     text-shadow: 2px 2px 4px #000;
     margin: 0;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    width: 30%;
+    
+  }
+  .hh p{
+    font-size: 45%;
+    margin-top: 0%;
+    padding-top: 0%;
+    text-align: center;
+    color: #F0B63A;
   }
 
   .user-actions {
@@ -64,60 +85,49 @@
     height: 40px;
     border-radius: 50%;
   }
-
-  /* ---------- RESPONSIVE FIXES ---------- */
-  @media (max-width: 768px) {
-    .ord {
-      justify-content: space-around;
-      padding: 6px 8px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-    }
-
-    .hh {
-      font-size: 1.4rem;
-      flex: none;
-    }
-
-    .right img {
-      width: 30px;
-      height: 30px;
-    }
-
-    .logout {
-      font-size: 12px;
-      padding: 5px 8px;
-    }
-  }
         .login-container {
             display: flex;
             justify-content:left;
             align-items: center;
             height: calc(100vh - 120px);
             height: 100vh;
+            margin-top:6%;
+            padding-top: 3%;
+            width: 100%;
+            background-image: url("https://cdn.corenexis.com/f/pFm2xsFhmZe.png");
+            background-size:cover;
+            
+            background-repeat:no-repeat;
+        
         }
 
         .login-box {
             background-color: rgb(3, 13, 22);
             padding: 40px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            margin-left: 10%;
-            border-bottom-left-radius: 30%;
-            border-top-right-radius: 30%;
-            
-
+            margin-top: 2%;
+            margin-bottom: 2%;
+            max-width: 350px;
+            border:1px solid #C57A1F;
+            margin-left: 40%;
+            border-radius: 4%;
+            background: linear-gradient(135deg, #311927 0%, #25152E 45%, #18131A 100%);
+            box-shadow:
+            0 0 25px rgba(255,136,0,.35),
+            0 15px 40px rgba(0,0,0,.45);
         }
 
         .login-box h2 {
             font-size: 2.5em;
-            color: #573666;
+            
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
+
+            
+            
+        }
+        .login-box h4{
+            text-align: center;
+            color: #FFC247;
         }
 
         /* Form Styles */
@@ -128,7 +138,7 @@
 
         form label {
             font-size: 150%;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
             color: #333;
             color: white;
         }
@@ -136,21 +146,22 @@
         form input[type="email"],
         form input[type="password"] {
             padding: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 1em;
-            color:bl;
+            color:#B9A6C4;
         }
 
         form input[type="submit"] {
             padding: 12px;
-            background-color: #573666;
-            color: white;
+            background: linear-gradient(90deg, #FFC247 0%, #FF8C1A 100%);
+            color: black;
             font-size: 1em;
-            border: none;
+            border: 1px solid #F0B63A;
             border-radius: 8px;
             cursor: pointer;
+            padding-left: 40%;
             transition: background-color 0.3s ease;
         }
 
@@ -171,30 +182,7 @@
         .register-link a:hover {
             text-decoration: underline;
         }
-
-         @media (min-width: 768px) {
-            .login-container {
-                justify-content: space-around;
-                flex-direction: row;
-                padding-top: 120px;
-            }
-
-            .side-image {
-                display: block;
-                width: 15%;
-                height: auto;
-            }
-
-            .login-box h2 {
-                font-size: 2.5em;
-            }
-
-            header h1 {
-                font-size: 3em;
-            }
-        }
-
-        @media (max-width: 480px) {
+         @media (max-width: 480px) {
             header img {
                 width: 40px;
                 height: 40px;
@@ -215,42 +203,59 @@
             .login-box h2 {
                 font-size: 1.8em;
             }
-        }
+         }
     </style>
+    <link rel="icon" href="https://png.pngtree.com/png-clipart/20230623/original/pngtree-3d-login-button-icon-with-mouse-cursor-png-image_9205409.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
 </head>
-<body>
-    <header>
+<body >
+        <header>
           <div class="ord">
             <div class="logo">
-              <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
+              <img src="https://cdn.corenexis.com/f/wyKdaZ54fUE.png" alt="logo">
             </div>
         
-            <h3 class="hh">Restaurants</h3>
+            <h3 class="hh"> VK Restaurants
+                <p><i class="fa-solid fa-leaf" style="color: green;"></i> Good Food, Great Moments <i class="fa-solid fa-leaf" style="color: green;"></i></p>
+            </h3>
+            
         
             <div class="user-actions">
               <a href="profile" class="profile">
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
+                <i class="fa-regular fa-circle-user"></i>
+                
               </a>
-              <a href="logout" class="logout">Logout</a>
+             
             </div>
           </div>
-    </header>
-    <div class="login-container">
-        <img src="https://www.clipartmax.com/png/full/112-1129793_clip-art-dishes-in-sink.png" alt="image" width="5%" height="5%">
-        <div style="background-color:#3b294a;width: 50%; " class="login-box">
-            <h2 style="font-size: 180%; color: white;">Register</h2>
-            <form method="post">
-                <label>email:</label><br>
-                <input type="email" name="email" required><br><br>
-                <label>Password:</label><br>
-                <input type="password" name="password" required><br><br>
-                <input type="submit" value="Register">
-            </form>
-            <p style="color: white;">Already have an account? <a href="/login" style="color: white;">Login here</a></p>
+        </header>
+        <div style="width: 100%;height:150%;" class="login-container">
+            
+            <div style="background-color:#2B1633 ;width: 50%; " class="login-box">
+                <h2> <i class="fa-solid fa-bowl-food food-icon" style="margin-top: 0%; color: #F9A826; width: 50%;">  <i class="fa-solid fa-utensils food-icon"></i></i></h2>
+                <h2 style="font-size: 150%; color: white; margin-top: 2%;" >Welcom back !</h2>
+                <h4 style="font-size: 100%; ">Login to continue food journey</h4>
+                <form method="post">
+                    <label > <i class="fa-regular fa-envelope" style="color: #F9A826;"></i> Email:</label><br>
+                    <input type="email" name="email" placeholder="Enter your email" required><br>
+                    <label > <i class="fa-solid fa-lock" style="color: #F9A826;"></i> Password:</label><br>
+                    <input type="password"  name="password" placeholder="Enter your password"  required ><br><br>
+                    <input type="submit" value="Register                             ➜">
+                </form>
+                
+                <p style="color: white; text-align: center;">if already have an account login? <br>
+                <a href="/login" style="color: #F9A826; text-decoration: underline;">login here</a></p>
+            </div>
+            
         </div>
-        <img src="https://graphicsfamily.com/wp-content/uploads/edd/2021/06/Editable-Photoshop-Food-Logo-Design-PNG-Transparent-2048x2048.png" alt="image" width="5%" height="5%" style="align-items: bottom;">
-    </div>
-
    
 </body>
 </html>
+
+
+
+
+
+
+
