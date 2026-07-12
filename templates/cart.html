@@ -9,44 +9,61 @@
       max-width: 800px;
       margin: auto;
       padding: 20px;
-      background-color:#333;
+      background:radial-gradient(circle at right,#4a004d 0%,#250027 35%,#170018 70%,#0d0010 100%);
     }
-
-
-
-    header {
+    html{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   /* Hide left/right scrolling */
+    overflow-y: auto;
+    }
+     header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999; /* stays above all content */
   }
-     
+  .ord {
     
-    .ord {
-    background-color: #573666;
+    background: linear-gradient(90deg, #2C1220 0%, #201221 50%, #241224 100%);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    border-bottom: solid 2px cyan;
+    border-bottom: 3px solid #A33F15;
     padding: 10px 20px;
   }
 
   .logo img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-left: 40%;
     border-radius: 50%;
+    padding-left: 10%;
+
   }
 
   .hh {
-    color: #ffd966;
+    color: #F0B63A;
     font-size: 2rem;
-    padding-left: 2%;
+    padding-left: -2%;
     flex: 1;
     text-shadow: 2px 2px 4px #000;
     margin: 0;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    width: 30%;
+    
+  }
+  .hh p{
+    font-size: 45%;
+    margin-top: 0%;
+    padding-top: 0%;
+    text-align: center;
+    color: #F0B63A;
   }
 
   .user-actions {
@@ -68,37 +85,10 @@
     border-radius: 50%;
   }
 
-  /* ---------- RESPONSIVE FIXES ---------- */
-  @media (max-width: 768px) {
-    .ord {
-      justify-content: space-around;
-      padding: 6px 8px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
-    }
-
-    .hh {
-      font-size: 1.4rem;
-      flex: none;
-    }
-
-    .right img {
-      width: 30px;
-      height: 30px;
-    }
-
-    .logout {
-      font-size: 12px;
-      padding: 5px 8px;
-    }
-  }
-
     h1 {
       color: white;
       text-align: center;
+      margin-top: 12%;
     }
 
     .cart-item {
@@ -108,7 +98,8 @@
       margin-bottom: 10px;
       padding: 10px;
       border-bottom: 1px solid #ccc;
-      background-color: white;
+      background-color: black;
+      color: white;
       border-radius: 6px;
     }
 
@@ -147,45 +138,100 @@
       padding: 10px 20px;
       border-radius: 5px;
       border: none;
-      background-color: #f1f1f1;
+      
       cursor: pointer;
+       background:#FF8C00;
+        border:1PX solid #E65100;
+        color: whitesmoke;
+        font-weight: bold;
     }
 
     #total {
       text-align: center;
       font-size: 18px;
       font-weight: bold;
-      background-color: white;
+      background-color: black;
       padding: 10px;
       margin-top: 20px;
       border-radius: 6px;
+      color: white;
+      border-bottom: 1px solid #ccc;
     }
+
+    #message{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.success{
+    background: #28a745;
+}
+
+.error{
+    background: #dc3545;
+}
+
+
+
+.item-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.cart-img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:8px;
+}
   </style>
-  <link rel="icon" href="https://img.freepik.com/premium-vector/3d-glossy-vkontakte-vk-logo-modern-gold-circle-frame-social-media-icon-network-logos_248162-2338.jpg?w=360">
 </head>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <body>
-
   <header>
-      <div class="ord">
-        <div class="logo">
-          <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
-        </div>
-    
-        <h3 class="hh">Restaurants</h3>
-    
-        <div class="user-actions">
-          <a href="profile" class="profile">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
-          </a>
-          <a href="logout" class="logout">Logout</a>
-        </div>
-      </div>
-    </header>
+          <div class="ord">
+            <div class="logo">
+              <img src="https://cdn.corenexis.com/f/wyKdaZ54fUE.png" alt="logo">
+            </div>
+        
+            <h3 class="hh"> VK Restaurants
+                <p><i class="fa-solid fa-leaf" style="color: green;"></i> Good Food, Great Moments <i class="fa-solid fa-leaf" style="color: green;"></i></p>
+            </h3>
+            
+        
+            <div class="user-actions">
+              <a href="profile" class="profile">
+                <i class="fa-regular fa-circle-user"></i>
+                
+              </a>
+             
+            </div>
+          </div>
+    </header> 
+  
 
-  <h1 style="margin-top:15%">Your Shopping Cart</h1>
-  <div id="cart-list"></div>
+  <h1>Your Shopping Cart</h1>
+  <div id="cart-list">
+    
+  </div>
   <p id="total"></p>
-  <button onclick="placeOrder()" style="margin-left: 42%;">Place Order</button>
+  <button onclick="backToMenu()" style="margin-left: 28%;">Back to shopping</button>
+  <button onclick="placeOrder()" style="margin-left: 10%;">Place Order</button>
+  <div id="message"></div>
+
+  
 
   <script>
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -197,13 +243,24 @@
         const existing = consolidated.find(i => i.name === item.name);
         if (existing) {
           existing.quantity += 1;
+          
         } else {
-          consolidated.push({ ...item, quantity: 1 });
+           consolidated.push({
+                name: item.name,
+                price: item.price,
+                image: item.image,
+                quantity: 1
+            });
         }
       });
       cart = consolidated;
       localStorage.setItem('cart', JSON.stringify(cart));
     }
+    
+    function backToMenu() {
+        window.location.href = "/foodmenu";
+    }
+
 
     function renderCart() {
       const cartList = document.getElementById('cart-list');
@@ -213,21 +270,27 @@
       cart.forEach((item, index) => {
         total += item.price * item.quantity;
 
+        console.log(item.image);
+
         const div = document.createElement('div');
         div.className = 'cart-item';
 
         div.innerHTML = `
-          <div class="item-info" >
-            <strong>${item.name}</strong> - ₹${item.price} × ${item.quantity}
+          <div class="item-info">
+              <img src="${item.image}" class="cart-img">
+              <div>
+                  <strong>${item.name}</strong><br>
+                  ₹${item.price} × ${item.quantity}
+              </div>
           </div>
           
           <div class="qty-controls">
-            <button onclick="increaseQty(${index})">➕</button>
+            <button onclick="increaseQty(${index})"><i class="fa-solid fa-plus" style="color:white;font-size:20px;"></i></button>
           </div>
           <div class="qty-controls">
-            <button onclick="decreaseQty(${index})">➖</button>
+            <button onclick="decreaseQty(${index})"><i class="fa-solid fa-minus" style="color:white;font-size:20px;"></i></button>
           </div>
-          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+          <button class="remove-btn" onclick="removeItem(${index})"><i class="fa-solid fa-trash" style="text-align:center;"></i></button>
         `;
 
         cartList.appendChild(div);
@@ -259,15 +322,32 @@
       renderCart();
     }
 
-    function placeOrder() {
-        if (cart.length === 0) {
-            alert("Cart is empty!");
-            return;
+    function showMessage(text, type) {
+    const msg = document.getElementById("message");
+
+    msg.innerHTML = text;
+    msg.className = type;
+    msg.style.display = "block";
+
+    setTimeout(() => {
+        msg.style.display = "none";
+
+        // Redirect only after success message
+        if (type === "success") {
+            localStorage.setItem('orderData', JSON.stringify(cart));
+            window.location.href = 'placeorder';
         }
-        alert("Order placed successfully!");
-        localStorage.setItem('orderData', JSON.stringify(cart));
-        window.location.href = 'placeorder';
-        }
+    }, 2000);
+}
+
+function placeOrder() {
+    if (cart.length === 0) {
+        showMessage("Cart is empty!", "error");
+        return;
+    }
+
+    showMessage("Order placed successfully!", "success");
+}
 
 
     consolidateCart(); 
