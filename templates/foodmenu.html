@@ -7,50 +7,81 @@
     <link rel="icon" href="vk1.png"type="image/png">
     <style>
         body{
-            background-color: #f8f8f8;
-            margin: 0%;
-            background-color: #573666;
+        margin:0;
+        padding:0;
+        background:radial-gradient(circle at top,#4a004d 0%,#250027 35%,#170018 70%,#0d0010 100%);
+        background-attachment: fixed;
+
         }
         main{
             margin-top:0%;
         }
-         header {
+        html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   /* Hide left/right scrolling */
+    overflow-y: auto;
+    }
+        header {
     position: fixed;
-    top: 0;
+    top: fixed;
     left: 0;
     width: 100%;
     z-index: 999; /* stays above all content */
   }
      
     
-    .ord {
-    background-color: #573666;
+      .ord {
+    
+    background: linear-gradient(90deg, #121212 0%, #201221 50%, #121212 100%);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    border-bottom: solid 2px cyan;
+    border-bottom: 3px solid #A33F15;
     padding: 10px 20px;
   }
 
   .logo img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-left: 40%;
     border-radius: 50%;
+    padding-left: 10%;
+
   }
 
   .hh {
-    color: #ffd966;
+    color: #F0B63A;
     font-size: 2rem;
-    padding-left: 2%;
+    padding-left: -2%;
     flex: 1;
     text-shadow: 2px 2px 4px #000;
     margin: 0;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    width: 30%;
+    
+    
+  }
+  .hh p{
+    font-size: 45%;
+    margin-top: 0%;
+    padding-top: 0%;
+    margin-left: 0%;
+    text-align: center;
+    color: #F0B63A;
+  }
+  .hh h3{
+    text-align: center;
+    width: 30%;
   }
 
   .user-actions {
     display: flex;
+    justify-content:flex-end;
     align-items: center;
     gap: 15px;
   }
@@ -71,36 +102,32 @@
   /* ---------- RESPONSIVE FIXES ---------- */
   @media (max-width: 768px) {
     .ord {
-      justify-content: space-around;
-      padding: 6px 8px;
-    }
-
-    .logo {
-      width: 40px;
-      height: 40px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
     }
 
     .hh {
-      font-size: 1.4rem;
-      flex: none;
+      font-size: 1.6rem;
     }
 
-    .right img {
-      width: 30px;
-      height: 30px;
+    .user-actions {
+      gap: 10px;
     }
 
-    .logout {
-      font-size: 12px;
-      padding: 5px 8px;
+    .user-actions img {
+      width: 35px;
+      height: 35px;
     }
   }
        
     .pru{
         
-        background-color: beige;
-        margin-top: 0%;
-        width: 100%;
+        margin:0;
+        padding:0;
+        background:#111111;
+        background-attachment: fixed;
     }
     .hhh{
         text-align: center;
@@ -109,25 +136,47 @@
         width: 100%;
         margin-top: 0%;
         padding-top: 6%;
+        color: #121212;
     }
-  .card-box{
+    .card-box{
        display: flex;
       gap: 30px;
       flex-wrap: wrap;
       justify-content: center;
       padding-left: 5%;
       padding-right: 5%;
-  }
+    }
+    .card-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px; /* Prevent stretching */
+    margin: 0 auto; /* Center the box */
+    padding: 20px 0;
+}
+
 .card {
+    width: 280px;
+    margin-bottom: 30px;
+    background: #f8f8f8;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 3px 8px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+      
+
+    .card {
         flex: 7 10 20%;
         margin-left: 7px;
       width: 400px;
-      max-width: 300px;
       background:#f8f8f8;
       border-radius: 30px;
       overflow: hidden;
       box-shadow: 3px 8px 15px rgba(0,0,0,0.1);
       margin:0;
+      
     }
 
     .card img{
@@ -165,49 +214,12 @@
         transform: scale(0.95);
         filter: brightness(0.8);
     }
-
-        @media (max-width: 1024px) {
-    .card {
-        width: 30%;
-        max-width: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .card {
-        width: 45%;
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .card-box {
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .card {
-        width: 30%;
-        min-width: 100px;
-        margin-bottom: 10px;
-    }
-
-    .card img {
-        height: 120px;
-    }
-
-    .card-title {
-        font-size: 14px;
-    }
-}
-
-        
     
     .cart-icon {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #9a1989;
+    bottom: 30px;
+    right: 56px;
+    background-color:#FF8C00;
     color: white;
     padding: 10px 15px;
     border-radius: 50%;
@@ -223,6 +235,7 @@
         right: -8px;
         background-color: rgb(140, 0, 255);
         color: white;
+        font-weight: bold;
         font-size: 14px;
         border-radius: 50%;
         padding: 2px 6px;
@@ -246,15 +259,18 @@
         margin-left: 15%;
     }
     button{
-        background-color: orange;
-        border:none;
+        background:#FF8C00;
+        border:1PX solid #E65100;
         outline: none;
-        width: 100%;
-        height: 7%;
-        border-bottom-left-radius:                                                                                                                     00% ;
-        border-top-left-radius: 15%;
-        border-bottom-right-radius: 300%;
-        border-top-right-radius: 15%;
+        width: 60%;
+        height: 10%;
+        margin-bottom: 3%;
+        font-weight: bold;
+        color: whitesmoke;
+        border-radius: 50px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        
+        
     }
     button:hover {
     filter: brightness(1.1);
@@ -266,15 +282,13 @@
    .food-category {
     width: 90%;
     margin: 40px auto;
-    background-color: beige;
+    background-color: #121212;
     border-radius: 12px;
     padding: 20px;
 }
 
-.food-category h1 {
-    text-align: center;
-    font-style: italic;
-    margin-bottom: 20px;
+.food-category img {
+    height: 250px;
 }
 
 /* Grid layout: 3 columns fixed */
@@ -283,11 +297,12 @@
     grid-template-columns: repeat(3, 1fr); /* 3 items per row */
     gap: 20px;
     padding: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0,35);
     
 }
 
 .vivo {
-    background-color: rgb(204, 216, 182);
+    background-color:  black;
     padding: 20px;
     text-align: center;
     border-radius: 12px;
@@ -300,99 +315,175 @@
     object-fit: cover;
     border-radius: 8px;
 }
+.vivo h2{
+    font-style: normal;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    width: 80%;
+    border-radius: 30px;
+    margin-left: 10%;
+    background-color: #3A0A4A;
+    color: whitesmoke;
+    height: 10%;
+    text-align: center;
+}
 .vivo p {
-    text-align: right;
+    text-align: center;
+    font-size:150%;
+    padding-left: 0%;
+    margin-left: 0%;
+    font-weight: bold;
+    color: whitesmoke;
+}
+.slider{
+    
+    width:90%;
+    max-width:1400px;
+    margin:20px auto;
+    overflow:hidden;
+    border-radius:20px;
+    position:relative;
+    margin-bottom: 0%;
+    
 }
 
-    /* ✅ Responsive Design for mobile */
-    @media (max-width: 1024px) {
-      .menu-item {
-        grid-template-columns: repeat(2, 1fr);
-      }
+.slides{
+    display:none;
+}
 
-      .card-box {
-        gap: 20px;
-      }
+.slides img{
+    width:100%;
+    height:230px;
+    object-fit:fill;
+    border-radius:50px;
+    display:block;
+   
+    background: #121212;
+    border-radius:20px;
+   
+    
+}
+
+.fade{
+    animation:fade 1s;
+}
+
+@keyframes fade{
+    from{
+        opacity:0.4;
     }
-
-    @media (max-width: 600px) {
-      .menu-item {
-        grid-template-columns:repeat(2, 1fr);
-      }
-
-      .vivo img {
-        height: 150px;
-      }
-
-      .food-category {
-        padding: 10px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-
-      button {
-        font-size: 14px;
-        height: 35px;
-      }
-
-      .card {
-        max-width: 90%;
-      }
-
-      .hh {
-        font-size: 200%;
-        text-align: center;
-      }
-    .hhh{
-        padding-left:6%;
+    to{
+        opacity:1;
     }
 }
+
+@media(max-width:768px){
+    .slides img{
+        height:220px;
+    }
+}
+
+#message{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.success{
+    background-color: #28a745;
+}
+
+.error{
+    background-color: #dc3545;
+}
+    
     
 
 </style>
-    <link rel="icon" href="https://img.freepik.com/premium-vector/3d-glossy-vkontakte-vk-logo-modern-gold-circle-frame-social-media-icon-network-logos_248162-2338.jpg?w=360">
 
 
     
 </head>
+<link rel="icon" href="https://img.freepik.com/premium-vector/3d-glossy-vkontakte-vk-logo-modern-gold-circle-frame-social-media-icon-network-logos_248162-2338.jpg?w=360">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <body>
 
-    <header>
-      <div class="ord">
-        <div class="logo">
-          <img src="https://png.pngtree.com/png-vector/20220824/ourmid/pngtree-initial-letter-vk-logo-template-design-initial-logo-illustration-vector-png-image_38857728.png" alt="VK Logo">
-        </div>
-    
-        <h3 class="hh">Restaurants</h3>
-    
-        <div class="user-actions">
-          <a href="profile" class="profile">
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/020/911/750/small/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png" alt="Profile Icon">
-          </a>
-          <a href="logout" class="logout">Logout</a>
-        </div>
-      </div>
-    </header>
+        <header>
+          <div class="ord">
+            <div class="logo">
+              <img src="https://cdn.corenexis.com/f/wyKdaZ54fUE.png" alt="VK Logo">
+            </div>
+        
+            <h3 class="hh"> VK Restaurants
+                <p><i class="fa-solid fa-leaf" style="color: green;"></i> Good Food, Great Moments <i class="fa-solid fa-leaf" style="color: green;"></i></p>
+            </h3>
+            
+        
+            <div class="user-actions">
+              <a href="profile" class="profile">
+                <i class="fa-regular fa-circle-user" style="color: aliceblue;"></i>
+              </a>
+              <a href="logout" class="logout">Logout</a>
+              
+             
+            </div>
+          </div>
+        </header>
 
     <main>
+
+        
         
         <div class="pru">
             <h5 class="hhh">Given list of an items avalible in our restaurants</h5>
-            
+                <div class="slider">
+
+                    <div class="slides fade">
+                        <a href="#pizza"><img src="https://cdn.corenexis.com/f/ft2N3UM9WnO.png" alt="Pizza"></a>
+                    </div>
+
+                    <div class="slides fade">
+                        <a href="#juices"><img src="https://cdn.corenexis.com/f/zEDdwbU9br9.png" alt="Burger"></a>
+                    </div>
+
+                    <div class="slides fade">
+                        <a href="#sandwiches"><img src="https://cdn.corenexis.com/f/c4DJllTQ6VH.png" alt="Sandwich"></a>
+                    </div>
+
+                    <div class="slides fade">
+                        <a href="#ice-cream"><img src="https://cdn.corenexis.com/f/CVcyzyCW6Q6.png" alt="Juice"></a>
+                    </div>
+
+                    <div style="width: 98%; height: 120px; object-fit:fill;border-radius:50px;display:block;background: #121212;border-radius:20px; margin-top: 2%; margin-bottom: 0%; background-color: #121212; margin-left: 1%;" >
+                        <img src="https://cdn.corenexis.com/f/OCoexFkKNaz.png" alt="Juice">
+                    </div>
+
+                </div>
+           
+                <div style="text-align: center; margin-top: 0%;">
+                    <h1 style="border:solid 0px; color: #F0B63A;text-align: center; margin-top: 0%;"><i class="fa-solid fa-angles-left"></i> Explore Categories <i class="fa-solid fa-angles-right"></i></h1>
+                </div>
                
                 <div class="card-box">
                 <div class="card">
                     <a href="#cofee"><img src="https://www.freshfarms.com/wp-content/uploads/2023/02/The-Best-Way-to-Enjoy-Coffee-with-Milk-Fresh-Farms-Grocery-in-Chicago.jpg" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                        <b> cofee </b>
+                        <b><i class="fa-solid fa-mug-saucer"></i> cofee </b>
                         </div>
                 </div>
                 <div class="card">
                     <a href="#tiffin"><img src="https://static.tnn.in/thumb/msid-106854856,thumbsize-1270162,width-1280,height-720,resizemode-75/106854856.jpg" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                        <b> tiffin </b>
+                        <b><i class="fa-solid fa-bowl-food"></i> tiffin </b>
                         </div>
                 </div>
 
@@ -400,7 +491,7 @@
                 <div class="card">
                     <a href="#juices"><img src="https://img.onmanorama.com/content/dam/mm/en/food/recipe/images/2023/4/20/banana-juice.jpg" alt="" width="31%" height="31%"></a>
                         <div class="card-title">
-                        <b>Juices</b> 
+                        <b><i class="fa-solid fa-wine-glass"></i> Juices</b> 
                         </div>
                 </div>
                 
@@ -408,14 +499,14 @@
                 <div class="card" id="category-menu">
                     <a href="#milkshake"><img src="https://www.tastingtable.com/img/gallery/14-tips-you-need-when-making-a-homemade-milkshake/l-intro-1671810629.jpg" alt="" width="30%" height="30%" ></a>
                         <div class="card-title">
-                            <b>Milkshake</b>
+                            <b><i class="fa-solid fa-glass-water"></i> Milkshake</b>
                         </div>
                 </div>
                 
                 <div class="card">
                     <a href="#ice-cream"><img src="https://media.nbcchicago.com/2019/09/ice-cream-stock-79772399.jpg?quality=85&strip=all&resize=1200%2C675" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                            <b>ice-Cream</b>
+                            <b><i class="fa-solid fa-ice-cream"></i>ice-Cream</b>
                         </div>
                         
                 </div>  
@@ -425,7 +516,7 @@
                 <div class="card">
                     <a href="#burger"><img src="https://www.certifiedirishangus.ie/wp-content/uploads/2019/11/TheUltimateBurgerwBacon_RecipePic.jpg" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                            <b>Burger</b>
+                            <b><i class="fa-solid fa-burger"></i> Burger</b>
                         </div>
                 </div>
 
@@ -433,7 +524,7 @@
                 <div class="card">
                     <a href="#pizza"><img src="https://theawesomedaily.com/wp-content/uploads/2016/09/pictures-of-pizza-23-1.jpg" alt="" width="30%" height="30%" ></a>
                         <div class="card-title">
-                            <b>pizza</b>
+                            <b> <i class="fa-solid fa-pizza-slice"></i>pizza</b>
                         </div>
                         
                 </div>
@@ -443,21 +534,21 @@
                 <div class="card">
                     <a href="#sandwiches"><img src="https://chefeel.com/chefgeneralfiles/2022/09/high-angle-delicious-sandwiches-arrangement-scaled.jpg" alt="" width="31%" height="31%"></a>
                         <div class="card-title">
-                            <b>Sandwiches</b>
+                            <b> <i class="fa-solid fa-bread-slice"></i>Sandwiches</b>
                         </div>
                 </div>
 
                 <div class="card">
                     <a href="#nodiels"><img src="https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/63/2020/03/GettyImages-1051749178-scaled.jpg" alt="" width="30%" height="30%" ></a>
                         <div class="card-title">
-                            <b>nodiels</b>
+                            <b><i class="fa-solid fa-bowl-food"></i> nodiels</b>
                         </div>
                     </div>
                 
                 <div class="card">    
                     <a href="#veg-meals"><img src="http://cookingmypassion.com/wp-content/uploads/Homemade-veg-meals-cookingmypassion.jpg" alt="" width="31%" height="31%"></a>
                         <div class="card-title">
-                            <b>veg-meals</b>
+                            <b><i class="fa-solid fa-bowl-rice"></i> veg-meals</b>
                         </div>
                 </div>
 
@@ -465,26 +556,26 @@
                 <div class="card">
                     <a href="#non-veg meals"><img src="https://external-preview.redd.it/Zm1laUm7gpqVsdaIgK7VMq81P2eVqR_YD89iOFO_9qQ.jpg?width=960&crop=smart&auto=webp&s=e8de8d1ea41e01f1a4525cb27fa6c060789f7184" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                            non-veg meals</div>
+                        <i class="fa-solid fa-drumstick-bite"></i> non-veg meals</div>
                         </div>
                 
                 <div class="card">
                     <a href="#veg-biryani"><img src="https://www.dwarakaorganic.com/wp-content/uploads/2012/06/Veg-Biryani-Recipe.jpg" alt="" width="31%" height="31%"></a>
                         <div class="card-title">
-                        <b> Veg-Biryani </b>
+                        <b><i class="fa-solid fa-plate-wheat"></i> Veg-Biryani </b>
                         </div>
                 </div>
                 <div class="card">
                     <a href="#egg-biryani"><img src="https://www.chefkunalkapur.com/wp-content/uploads/2021/03/egg-biryani-1-scaled.jpeg?v=1625193642" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                            <b>egg-biryani</b>
+                            <b><i class="fa-solid fa-egg"></i> egg-biryani</b>
                         </div>
                 </div>
                 
                 <div class="card">
                     <a href="#hyderabadi-chicken-biryani"><img src="https://img.freepik.com/premium-photo/hyderabadi-chicken-biryani-food-photos_410516-42775.jpg?w=900" alt="" width="30%" height="30%" ></a>
                         <div class="card-title">
-                            <b>hyderabadi-chicken-biryani</b>
+                            <b> <i class="fa-solid fa-drumstick-bite"></i>hyderabadi-chicken-biryani</b>
                         </div>
                 </div>
                 
@@ -492,14 +583,14 @@
                 <div class="card">
                     <a href="#fish-biryani"><img src="https://images.aws.nestle.recipes/resized/5d80437e677ba82c7a4f6dfede5f6f24_fish_biryani_1500x700-1_944_531.jpg" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                            <b>fish-biryani</b>
+                            <b><i class="fa-solid fa-fish"></i> fish-biryani</b>
                         </div>
                 </div>
                 
                 <div class="card">
                     <a href="#mutton-biryani"><img src="https://www.licious.in/blog/wp-content/uploads/2020/12/Mutton-Biryani.jpg" alt=""  width="30%" height="30%"></a>
                         <div class="card-title">
-                            mutton-Biryani</div>
+                            <i class="fa-solid fa-bacon"></i> mutton-Biryani</div>
                 </div>
             </div>
             <br>
@@ -507,7 +598,7 @@
 
            {% for category, items in menu_by_category.items() %}
                 <div class="food-category" id="{{ category }}">
-                    <h1>{{ category|title }}</h1>
+                    <img src="{{ category_images[category] }}" class="category-banner">
 
                     <!-- FLEX CONTAINER for items -->
                     <div class="menu-item">
@@ -515,8 +606,10 @@
                             <div class="vivo">
                                 <img src="{{ item.image }}" alt="{{ item.name }}">
                                 <h2>{{ item.name }}</h2>
-                                <p>prize : ₹ <b>{{ item.price }}</b></p>
-                                <button onclick="addToCart('{{ item.name }}', '{{ item.price }}')">Add to Cart</button>
+                                <p>₹<b>{{item.price}}</b></p>
+                                <button onclick="addToCart('{{ item.name }}', '{{ item.price }}', '{{ item.image }}')">
+                                    <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                                </button>
                             </div>
                         {% endfor %}
                     </div>
@@ -525,29 +618,41 @@
 
 
 
-            
+            <div id="message"></div>
 
             
             <div class="cart-icon" onclick="window.location.href='cart'">
-                🧺
+                <i class="fa-solid fa-cart-shopping" style="font-size:28px;color:whitesmoke;"></i>
                 <span class="cart-count" id="cart-count">0</span>
             </div>
 
             <script>
-                function addToCart(name, price) {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
-                cart.push({ name, price });
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateCartCount();
-                alert(`${name} added to cart!`);
+               function showMessage(text, type) {
+                    const msg = document.getElementById("message");
+
+                    msg.innerHTML = text;
+                    msg.className = type;
+                    msg.style.display = "block";
+
+                    setTimeout(() => {
+                        msg.style.display = "none";
+                    }, 2000);
+                }
+
+                function addToCart(name, price, image) {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart.push({ name, price, image });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+
+                    showMessage(`${name} added to cart!`, "success");
                 }
 
                 function updateCartCount() {
-                const cart = JSON.parse(localStorage.getItem('cart')) || [];
-                document.getElementById('cart-count').textContent = cart.length;
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    document.getElementById('cart-count').textContent = cart.length;
                 }
 
-            
                 updateCartCount();
             </script>
 
@@ -565,13 +670,39 @@
                         <img src="${item.image}" alt="${item.title}">
                         <h2>${item.title}</h2>
                         <p>Price: ₹${item.price}</p>
-                        <button onclick="addToCart('${item.title}', ${item.price})">Add to Cart</button>
+                        <button onclick="addToCart('${item.title}', ${item.price}, '${item.image}')">
+                            Add to Cart
+                        </button>
                         `;
                         container.appendChild(itemDiv);
                     });
                     });
                 });
                 </script>
+
+                <script>
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides(){
+
+                let slides = document.getElementsByClassName("slides");
+
+                for(let i=0;i<slides.length;i++){
+                    slides[i].style.display="none";
+                }
+
+                slideIndex++;
+
+                if(slideIndex > slides.length){
+                    slideIndex = 1;
+                }
+
+                slides[slideIndex-1].style.display="block";
+
+                setTimeout(showSlides,5000); // 5 seconds
+                }
+        </script>
 
 
             
